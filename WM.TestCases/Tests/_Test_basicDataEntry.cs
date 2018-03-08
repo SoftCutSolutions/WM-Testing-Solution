@@ -83,7 +83,7 @@ namespace WM.TestCases
             Service = "Anti Foam"
         };
 
-        public _Test_basicDataEntry_s2(): base(Browser.Chrome, Mode.Docker)
+        public _Test_basicDataEntry_s2(): base(Browser.Chrome, Mode.Local)
         {
             
         }

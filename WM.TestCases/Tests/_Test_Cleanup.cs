@@ -49,6 +49,11 @@ namespace WM.TestCases
             System.Threading.Thread.Sleep(1000);
 
         }
+        [Test]
+        public void NewArea2()
+        {
+
+        }
 
 
     }
