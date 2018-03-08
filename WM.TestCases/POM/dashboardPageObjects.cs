@@ -75,6 +75,10 @@ namespace WM.TestCases
         [FindsBy(How = How.XPath, Using = "//*[@id='InspectionRpt']/ul/li[4]/a")]
         public IWebElement mnuRequestReport { get; set; }
 
+        //Test Package
+        [FindsBy(How = How.XPath, Using = "//*[@id='InspectionRpt']/ul/li[6]/a")]
+        public IWebElement mnuTestPackage { get; set; }
+
         //Administration
         [FindsBy(How = How.XPath, Using = "//*[@id='li_Administration']")]
         public IWebElement mnuAdministration { get; set; }
@@ -161,6 +165,12 @@ namespace WM.TestCases
             mnuInspection.Click();
             mnuWeldJoint.Click();
             return new RequestReportPageObjects(_driver);
+        }
+        public testpackPageObjects openTestPackage()
+        {
+            mnuInspection.Click();
+            mnuTestPackage.Click();
+            return new testpackPageObjects(_driver);
         }
     }
 }

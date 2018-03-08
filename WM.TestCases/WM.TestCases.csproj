@@ -65,6 +65,8 @@
     <Compile Include="POM\RequestReportPageObjects.cs" />
     <Compile Include="Models\SelectNDEObj.cs" />
     <Compile Include="POM\selectNDEPageObjects.cs" />
+    <Compile Include="Models\TestPackObj.cs" />
+    <Compile Include="POM\testpackPageObjects.cs" />
     <Compile Include="POM\welderPageObjects.cs" />
     <Compile Include="POM\WeldJointPageObjects.cs" />
     <Compile Include="POM\wpsPageObjects.cs" />
