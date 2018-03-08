@@ -1,0 +1,6 @@
+<Playlist Version="1.0">
+<Add Test="WM.TestCases._Test_Cleanup_S1.DeleteWPS" />
+<Add Test="WM.TestCases._Test_Cleanup_S1.DeletePipingClass" />
+<Add Test="WM.TestCases._Test_Cleanup_S2.DeleteLine" />
+<Add Test="WM.TestCases._Test_Cleanup_S2.DeleteArea" />
+</Playlist>
