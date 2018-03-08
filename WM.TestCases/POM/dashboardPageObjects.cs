@@ -59,6 +59,14 @@ namespace WM.TestCases
         [FindsBy(How = How.XPath, Using = "//*[@id='li_Data']/ul/li[11]/a")]
         public IWebElement mnuWeldJoint { get; set; }
 
+        //Inspection
+        [FindsBy(How = How.XPath, Using = "//*[@id='InspectionRpt']/a")]
+        public IWebElement mnuInspection { get; set; }
+
+        //Request Report
+        [FindsBy(How = How.XPath, Using = "//*[@id='InspectionRpt']/ul/li[4]/a")]
+        public IWebElement mnuRequestReport{ get; set; }
+
         //Administration
         [FindsBy(How = How.XPath, Using = "//*[@id='li_Administration']")]
         public IWebElement mnuAdministration { get; set; }
@@ -127,6 +135,12 @@ namespace WM.TestCases
             mnuData.Click();
             mnuWeldJoint.Click();
             return new WeldJointPageObjects(_driver);
+        }
+        public RequestReportPageObjects OpenRequestReports()
+        {
+            mnuInspection.Click();
+            mnuWeldJoint.Click();
+            return new RequestReportPageObjects(_driver);
         }
     }
 }

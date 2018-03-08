@@ -59,6 +59,8 @@
     <Compile Include="POM\jointsPageObjects.cs" />
     <Compile Include="POM\linePageObjects.cs" />
     <Compile Include="POM\materialsPageObjects.cs" />
+    <Compile Include="Models\RequestReportObj.cs" />
+    <Compile Include="POM\RequestReportPageObjects.cs" />
     <Compile Include="POM\welderPageObjects.cs" />
     <Compile Include="POM\WeldJointPageObjects.cs" />
     <Compile Include="POM\wpsPageObjects.cs" />
