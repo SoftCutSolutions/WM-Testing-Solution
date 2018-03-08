@@ -1,0 +1,1 @@
+<Playlist Version="1.0"><Add Test="WM.TestCases._definitions_T1.NewPipingClass" /><Add Test="WM.TestCases._area_T1.NewArea" /><Add Test="WM.TestCases._welders_T1.NewWelder" /><Add Test="WM.TestCases._WPS_T1.NewWPS" /></Playlist>

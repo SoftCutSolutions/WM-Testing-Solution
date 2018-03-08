@@ -8,7 +8,6 @@ namespace WM.TestCases
 {
     public class lineObj
     {
-        public string AreaCode { get; set; }
         public string LineNo { get; set; }
         public string PipingClass { get; set; }
         public string Service { get; set; }

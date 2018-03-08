@@ -1,5 +1,0 @@
-<Playlist Version="1.0">
-<Add Test="WM.TestCases._Test_basicDataEntry_s2.NewArea" />
-<Add Test="WM.TestCases._Test_basicDataEntry_s2.NewLine" />
-<Add Test="WM.TestCases._Test_basicDataEntry_s2.NewJointPlusPlus" />
-</Playlist>

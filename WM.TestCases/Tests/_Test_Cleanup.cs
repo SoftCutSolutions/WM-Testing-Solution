@@ -12,103 +12,97 @@ namespace WM.TestCases
 {
     [TestFixture]
     [Parallelizable]
-    public class _Test_Cleanup_S1 : Hooks
+    public class _WPS_T3 : Hooks
     {
-        public _Test_Cleanup_S1() : base(Browser.Chrome, Mode.Docker)
+        public _WPS_T3()
         {
 
+        }
+        [Test]
+        public void DeleteWPS()
+        {
+            wpsPageObjects wps = Dash.openWPS();
+            System.Threading.Thread.Sleep(1000);
+
+            wps.DeleteWPS(testValues._g_WPS);
+            System.Threading.Thread.Sleep(1000);
+
+        }
+    }
+
+    [TestFixture]
+    [Parallelizable]
+    public class _welders_T3 : Hooks
+    {
+        public _welders_T3()
+        {
+
+        }
+        [Test]
+        public void DeleteWelder()
+        {
+            welderPageObjects wld = Dash.OpenWelder();
+            System.Threading.Thread.Sleep(1000);
+
+            wld.DeleteWelder(testValues._g_Welder);
+            System.Threading.Thread.Sleep(1000);
+        }
+    }
+
+    [TestFixture]
+    [Parallelizable]
+    public class _definitions_T3 : Hooks
+    {
+        public _definitions_T3()
+        {
 
         }
         [Test]
         public void DeletePipingClass()
         {
-            loginPageObjects login = new loginPageObjects(driver);
-            dashboardPageObjects dash = login.login("admin", "WMsoftcut!");
-            Assert.IsTrue(dash.pnlJointsStats.Text.Contains("Joints Stats & Charts"));
-
-            definitionsPageObjects defs = dash.openDefinitions();
-            defs.DeletePipingClass("4CS01P");
+            definitionsPageObjects defs = Dash.openDefinitions();
+            defs.DeletePipingClass(testValues._g_PipingClass);
 
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(1);
             //Assert.IsTrue(defs.alert.Text.ToLower().Contains("succesfully"));
         }
-
-        [Test]
-        public void DeleteWPS()
-        {
-            loginPageObjects login = new loginPageObjects(driver);
-            dashboardPageObjects dash = login.login("admin", "WMsoftcut!");
-            Assert.IsTrue(dash.pnlJointsStats.Text.Contains("Joints Stats & Charts"));
-
-            WPSObj w = new WPSObj {WPSName = "_WPS01"};
-
-            wpsPageObjects wps = dash.openWPS();
-            System.Threading.Thread.Sleep(1000);
-
-            wps.DeleteWPS(w);
-            System.Threading.Thread.Sleep(1000);
-
-        }
-        [Test]
-        public void NewArea2()
-        {
-
-        }
-
-
     }
 
     [TestFixture]
     [Parallelizable]
-    public class _Test_Cleanup_S2 : Hooks
+    public class _area_T3 : Hooks
     {
-        public _Test_Cleanup_S2(): base(Browser.Chrome, Mode.Docker)
+        public _area_T3()
         {
 
         }
-
-        [Test]
-        public void DeleteLine()
-        {
-            loginPageObjects login = new loginPageObjects(driver);
-            dashboardPageObjects dash = login.login("admin", "WMsoftcut!");
-            Assert.IsTrue(dash.pnlJointsStats.Text.Contains("Joints Stats & Charts"));
-
-            linePageObjects line = dash.openLines();
-
-            lineObj ln = new lineObj
-            {
-                AreaCode = "Regression Area",
-                LineNo = "Line01",
-                PipingClass = "4CS01P",
-                MainSize = "12",
-                revision = "A",
-                DrawingNo1 = "Draw0123",
-                DrawingNo2 = "Draw0124",
-                SheetNo1 = "1/2",
-                SheetNo2 = "2/2",
-                Service = "Anti Foam"
-            };
-
-            line.DeleteLine(ln);
-
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(1);
-            //Assert.IsTrue(area.alertD.Text.Contains("succesfully"));
-        }
-
         [Test]
         public void DeleteArea()
         {
-            loginPageObjects login = new loginPageObjects(driver);
-            dashboardPageObjects dash = login.login("admin", "WMsoftcut!");
-            Assert.IsTrue(dash.pnlJointsStats.Text.Contains("Joints Stats & Charts"));
-
-            areasPageObjects area = dash.openAreas();
-            area.deleteArea("Regression Area");
+            areasPageObjects area = Dash.openAreas();
+            area.deleteArea(testValues._g_Area);
 
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(1);
             //Assert.IsTrue(area.alertD.Text.Contains("succesfully"));
         }
+    }
 
+    [TestFixture]
+    [Parallelizable]
+    public class _line_T3 : Hooks
+    {
+        public _line_T3()
+        {
+
+        }
+        [Test]
+        public void DeleteLine()
+        {
+            linePageObjects line = Dash.openLines();
+            line.DeleteLine(testValues._g_Line);
+
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(1);
+            //Assert.IsTrue(area.alertD.Text.Contains("succesfully"));
+        }
     }
 }

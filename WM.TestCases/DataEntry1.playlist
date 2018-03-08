@@ -1,4 +1,0 @@
-<Playlist Version="1.0">
-<Add Test="WM.TestCases._Test_basicDataEntry_s1.NewWPS" />
-<Add Test="WM.TestCases._Test_basicDataEntry_s1.NewPipingClass" />
-</Playlist>

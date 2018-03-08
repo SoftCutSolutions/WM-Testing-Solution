@@ -95,7 +95,7 @@ namespace WM.TestCases
             _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
 
             selectArea.Click();
-            selectArea.ddlSelectByLabel(line.AreaCode);
+            selectArea.ddlSelectByLabel(testValues._g_Area);
             txtLineNo.SendCheckKeys(line.LineNo);
             txtMainSize.SendCheckKeys(line.MainSize);
             selectPipingClass.ddlSelectByValue(line.PipingClass);
@@ -122,7 +122,7 @@ namespace WM.TestCases
 
         public void DeleteLine(lineObj line)
         {
-            txtAreaFilter.SendCheckKeys(line.AreaCode);
+            txtAreaFilter.SendCheckKeys(testValues._g_Area);
             txtLineFilter.SendCheckKeys(line.LineNo);
 
             System.Threading.Thread.Sleep(1000);

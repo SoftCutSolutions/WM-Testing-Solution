@@ -11,9 +11,18 @@ namespace WM.TestCases
     public class Hooks :_Base
     {
         public string remote = "http://localhost:4446/wd/hub";
-        public Hooks(Browser browser, Mode mode)
+        private dashboardPageObjects dash;
+        public static Mode _g_Mode= Mode.Local;
+        public static Browser _g_Browser = Browser.Chrome;
+
+        internal dashboardPageObjects Dash { get => dash; set => dash = value; }
+
+        public Hooks()
         {
-            if (browser == Browser.Chrome) { 
+            Browser browser = _g_Browser;
+            Mode mode = _g_Mode;
+
+            if (browser == Browser.Chrome) {
                 if (mode == Mode.Local)
                     driver = new ChromeDriver();
                 else if (mode == Mode.Docker)
@@ -59,6 +68,10 @@ namespace WM.TestCases
         public void Init()
         {
             driver.Navigate().GoToUrl("http://ate.azurewebsites.net");
+            loginPageObjects login = new loginPageObjects(driver);
+            dashboardPageObjects _dash = login.login(testValues._g_UserName, testValues._g_Password);
+            dash = _dash;
+            Assert.IsTrue(Dash.pnlJointsStats.Text.Contains("Joints Stats & Charts"));
         }
 
         [TearDown]

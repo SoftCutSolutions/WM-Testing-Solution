@@ -65,11 +65,10 @@ namespace WM.TestCases
         public void newArea(string AreaCode)
         {
             btnNewArea.Click();
-            // _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
-            txtAreaCode.waitforElement();
+            System.Threading.Thread.Sleep(5000);
 
             txtAreaCode.SendCheckKeys(AreaCode);
-            _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+            System.Threading.Thread.Sleep(2000);
 
             btnSave.Click();
         }
@@ -77,15 +76,16 @@ namespace WM.TestCases
         public void deleteArea(string AreaCode)
         {
             btnSearch.Click();
+            System.Threading.Thread.Sleep(1000);
             txtsearchValue.SendCheckKeys(AreaCode);
 
-            _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(1);
+            System.Threading.Thread.Sleep(1000);
             btnFind.Click();
 
-            _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+            System.Threading.Thread.Sleep(3000);
             btnDelete.Click();
 
-            _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(2);
+            System.Threading.Thread.Sleep(2000);
             btnOK.Click();
         }
     }
