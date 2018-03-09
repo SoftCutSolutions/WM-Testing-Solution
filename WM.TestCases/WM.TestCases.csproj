@@ -54,6 +54,7 @@
     <Compile Include="Models\WelderObj.cs" />
     <Compile Include="Models\WeldJointObj.cs" />
     <Compile Include="Models\WPSObj.cs" />
+    <Compile Include="Models\areaObj.cs" />
     <Compile Include="POM\areasPageObjects.cs" />
     <Compile Include="POM\impexpPageObjects.cs" />
     <Compile Include="Models\InspectionReportObj.cs" />
@@ -71,6 +72,7 @@
     <Compile Include="POM\WeldJointPageObjects.cs" />
     <Compile Include="POM\wpsPageObjects.cs" />
     <Compile Include="seleniumMethods.cs" />
+    <Compile Include="Tests\_T_requestReports.cs" />
     <Compile Include="testValues.cs" />
     <Compile Include="_Base.cs" />
     <Compile Include="POM\dashboardPageObjects.cs" />

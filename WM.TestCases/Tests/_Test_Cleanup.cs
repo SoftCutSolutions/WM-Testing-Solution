@@ -61,7 +61,7 @@ namespace WM.TestCases
         public void DeletePipingClass()
         {
             definitionsPageObjects defs = Dash.openDefinitions();
-            defs.DeletePipingClass(testValues._g_PipingClass);
+            defs.DeletePipingClass(testValues._g_Line.PipingClass);
 
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(1);
             //Assert.IsTrue(defs.alert.Text.ToLower().Contains("succesfully"));

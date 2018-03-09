@@ -30,6 +30,7 @@ namespace WM.TestCases
                     DesiredCapabilities cap =  DesiredCapabilities.Chrome();
                     cap.SetCapability("version", "");
                     cap.SetCapability("platform", "LINUX");
+                    //cap.SetCapability("maxInstances", "100");
 
                     driver = new RemoteWebDriver(new Uri(remote), cap);
                 }

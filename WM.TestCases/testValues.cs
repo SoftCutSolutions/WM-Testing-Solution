@@ -13,8 +13,15 @@ namespace WM.TestCases
         public static string _g_UserName = "admin";
         public static string _g_Password = "WMsoftcut!";
 
-        public static string _g_PipingClass = "4CS01P!";
-        public static string _g_Area = "Regression Area";
+        public static areaObj _g_Area = new areaObj
+        {
+            AreaCode = "Regression Area",
+            SubArea1 = "Flow Line",
+            SubArea2 = "Piping",
+            Description = "Test Area for Regression Testing",
+            Location = "Muscat",
+            QRNumber = "123456"
+        };
 
         public static WelderObj _g_Welder = new WelderObj
         {
@@ -25,13 +32,19 @@ namespace WM.TestCases
             SerialNo = "123456",
             WelderPosition = "Senior Welder",
         };
+        public static RequestReportObj _g_RequestReport = new RequestReportObj
+        {
+            reportDate = "22-10-2017",
+            reportNumber = "DAL-0786",
+            reportType = "DAL"
+        };
 
         public static welderProcess _g_WelderProcessValues = new welderProcess
         {
             DIAMFrom = "2",
-            DIAMTo = "12",
+            DIAMTo = "24",
             THICKFrom = "0",
-            THICKTo = "24",
+            THICKTo = "12",
             Material = "P1-P6",
             Position = "C"
         };

@@ -99,10 +99,11 @@ namespace WM.TestCases
             txtJointDIAM.SendCheckKeys(joint.DIAM);
             txtJointTHICK.SendCheckKeys(joint.THICK);
 
-            selectJointWPS.SendKeys(Keys.Down);
+            System.Threading.Thread.Sleep(2000);
+
             selectJointWPS.SendKeys(Keys.Down);
 
-            System.Threading.Thread.Sleep(5000);
+            System.Threading.Thread.Sleep(2000);
 
             selectJointWPS.ddlSelectByLabel(joint.JointWPS);
 

@@ -37,19 +37,19 @@ namespace WM.TestCases
         public IWebElement txtPQR { get; set; }
 
         //Thick From 
-        [FindsBy(How = How.XPath, Using = "id('MyTable')/tbody[1]/tr[5]/td[2]/input[@id='ThickFrom']")]
+        [FindsBy(How = How.XPath, Using = "id('MyTable')/tbody[1]/tr[3]/td[2]/input[@id='ThickFrom']")]
         public IWebElement thickFrom { get; set; }
 
         //Thick To 
-        [FindsBy(How = How.XPath, Using = "id('MyTable')/tbody[1]/tr[5]/td[3]/input[@id='ThickTo']")]
+        [FindsBy(How = How.XPath, Using = "id('MyTable')/tbody[1]/tr[3]/td[3]/input[@id='ThickTo']")]
         public IWebElement thickTo { get; set; }
 
         //DIA From 
-        [FindsBy(How = How.XPath, Using = "id('MyTable')/tbody[1]/tr[5]/td[5]/input[@id='DiamFrom']")]
+        [FindsBy(How = How.XPath, Using = "id('MyTable')/tbody[1]/tr[3]/td[5]/input[@id='DiamFrom']")]
         public IWebElement diaFrom { get; set; }
 
         //DIA To 
-        [FindsBy(How = How.XPath, Using = "id('MyTable')/tbody[1]/tr[5]/td[6]/input[@id='DiamTo']")]
+        [FindsBy(How = How.XPath, Using = "id('MyTable')/tbody[1]/tr[3]/td[6]/input[@id='DiamTo']")]
         public IWebElement diaTo { get; set; }
 
         //Save WPS btn
@@ -72,6 +72,11 @@ namespace WM.TestCases
         [FindsBy(How = How.XPath, Using = "//*[@id='fbox_tblWPS_search']")]
         public IWebElement btnFind { get; set; }
 
+
+        //WPS Edit btn
+        [FindsBy(How = How.XPath, Using = "//*[@id='tblWPS']/tbody/tr[2]/td[10]/div/button[2]")]
+        public IWebElement btnEdit { get; set; }
+
         //WPS Delete btn
         [FindsBy(How = How.XPath, Using = "//*[@id='tblWPS']/tbody/tr[2]/td[10]/div/button[3]")]
         public IWebElement btnDelete { get; set; }
@@ -79,6 +84,10 @@ namespace WM.TestCases
         //WPS DeleteOK btn
         [FindsBy(How = How.XPath, Using = "/html[1]/body[@class='modal-open']/div[@class='bootbox modal fade bootbox-confirm in']/div[@class='modal-dialog']/div[@class='modal-content']/div[@class='modal-footer']/button[@class='btn btn-primary']")]
         public IWebElement btnDeleteOK { get; set; }
+
+        //PWHT
+        [FindsBy(How = How.XPath, Using = "//*[@id='PWHT']")]
+        public IWebElement chkPWHT { get; set; }
 
         public void NewWPS(WPSObj WPS)
         {
@@ -108,6 +117,28 @@ namespace WM.TestCases
             btnDelete.Click();
             System.Threading.Thread.Sleep(1000);
             btnDeleteOK.Click();
+        }
+
+        public void EditWPS(WPSObj WPS)
+        {
+            btnSearchWPS.Click();
+            selectSearchBy.ddlSelectByLabel("WPS No");
+            txtSearchValue.SendCheckKeys(WPS.WPSName);
+            btnFind.Click();
+            System.Threading.Thread.Sleep(2000);
+
+            btnEdit.Click();
+            System.Threading.Thread.Sleep(3000);
+
+            chkPWHT.Click();
+
+            txtPQR.SendCheckKeys(WPS.PQR + " - x123");
+            System.Threading.Thread.Sleep(1000);
+
+
+            btnSaveWPS.Click();
+            System.Threading.Thread.Sleep(3000);
+
         }
     }
 }
