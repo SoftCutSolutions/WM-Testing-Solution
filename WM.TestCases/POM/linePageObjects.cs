@@ -59,6 +59,10 @@ namespace WM.TestCases
         [FindsBy(How = How.XPath, Using = "//*[@id='tblDrawingNOs']/tbody/tr[2]/td[5]/div/button[2]")]
         public IWebElement btnNewSheetRow1 { get; set; }
 
+        //New Sheet btn
+        [FindsBy(How = How.XPath, Using = "//*[@id='tblDrawingNOs']/tbody/tr[3]/td[5]/div/button[2]")]
+        public IWebElement btnNewSheetRow2 { get; set; }
+
         //Sheet No txt
         [FindsBy(How = How.XPath, Using = "//*[@id='SheetNO']")]
         public IWebElement txtSheetNo { get; set; }
@@ -79,6 +83,10 @@ namespace WM.TestCases
         //Line Filter
         [FindsBy(How = How.XPath, Using = "//*[@id='gs_LineNum']")]
         public IWebElement txtLineFilter { get; set; }
+
+        //Line Edit Btn
+        [FindsBy(How = How.XPath, Using = "//*[@id='tblLines']/tbody/tr[2]/td[12]/div/button[1]")]
+        public IWebElement btnEditLine { get; set; }
 
         //Line Delete Btn
         [FindsBy(How = How.XPath, Using = "//*[@id='tblLines']/tbody/tr[2]/td[12]/div/button[2]")]
@@ -101,15 +109,47 @@ namespace WM.TestCases
             selectPipingClass.ddlSelectByValue(line.PipingClass);
             selectService.ddlSelectByValue(line.Service);
             txtRevision.SendCheckKeys(line.revision);
+
             txtDrawingNo.SendCheckKeys(line.DrawingNo1);
             btnAddDrawingNo.Click();
 
-            _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+            System.Threading.Thread.Sleep(5000);
 
             btnNewSheetRow1.waitforElement();
             btnNewSheetRow1.Click();
 
-            _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+            System.Threading.Thread.Sleep(5000);
+
+            txtSheetNo.waitforElement();
+            txtSheetNo.SendCheckKeys(line.SheetNo1);
+            btnSaveSheet.Click();
+
+            System.Threading.Thread.Sleep(3000);
+
+            btnSaveLine.Click();
+        }
+
+        public void EditLine(lineObj line)
+        {
+            txtAreaFilter.SendCheckKeys(testValues._g_Area.AreaCode);
+            txtLineFilter.SendCheckKeys(line.LineNo);
+
+            System.Threading.Thread.Sleep(1000);
+
+            btnEditLine.Click();
+
+            System.Threading.Thread.Sleep(1000);
+
+            //
+            txtDrawingNo.SendCheckKeys(line.DrawingNo2);
+            btnAddDrawingNo.Click();
+
+            System.Threading.Thread.Sleep(5000);
+
+            btnNewSheetRow2.waitforElement();
+            btnNewSheetRow2.Click();
+
+            System.Threading.Thread.Sleep(5000);
 
             txtSheetNo.waitforElement();
             txtSheetNo.SendCheckKeys(line.SheetNo1);
