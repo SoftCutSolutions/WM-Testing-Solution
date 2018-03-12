@@ -9,7 +9,7 @@ using System;
 namespace WM.TestCases
 {
     [TestFixture]
-    public class Hooks :_Base
+    public class Hooks :_base
     {
         public string remote = "http://localhost:4446/wd/hub";
         private dashboardPageObjects dash;
@@ -74,10 +74,33 @@ namespace WM.TestCases
         [SetUp]
         public void Init()
         {
+            string TestUser = "";
+            string TestPassword = "";
+            try
+            {
+                TestUser = TestContext.CurrentContext.Test.Properties.Get("user").ToString();
+                TestPassword = TestContext.CurrentContext.Test.Properties.Get("password").ToString();
+
+            }
+            catch (Exception)
+            {
+
+            }
+            if (string.IsNullOrEmpty(TestUser))
+            {
+                TestUser = testValues._g_UserName;
+            }
+
+            if (string.IsNullOrEmpty(TestPassword))
+            {
+                TestPassword = testValues._g_Password;
+            }
+
+
             driver = selectDriver();
             driver.Navigate().GoToUrl("http://ate.azurewebsites.net");
             loginPageObjects login = new loginPageObjects(driver);
-            dashboardPageObjects _dash = login.login(testValues._g_UserName, testValues._g_Password);
+            dashboardPageObjects _dash = login.login(TestUser, TestPassword);
             dash = _dash;
             Assert.IsTrue(Dash.pnlJointsStats.Text.Contains("Joints Stats & Charts"));
         }

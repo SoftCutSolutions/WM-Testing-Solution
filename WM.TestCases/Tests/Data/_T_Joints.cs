@@ -43,5 +43,27 @@ namespace WM.TestCases
             jnts.btnSave.Click();
             System.Threading.Thread.Sleep(2000);
         }
+
+
+        [Test,  Category("non-admin")]
+        public void DeleteOpenJointsSUCESS()
+        {
+            jointsPageObjects jnts = Dash.openJoints();
+            jnts.SelectLine(testValues._g_LineNo);
+            System.Threading.Thread.Sleep(2000);
+
+            jnts.DeleteOpenJoints();
+        }
+
+
+        [Test, Property("user", "qa1"), Property("password", "123456")]
+        public void DeleteWeldedJointsFAILS()
+        {
+            jointsPageObjects jnts = Dash.openJoints();
+            jnts.SelectLine(testValues._g_LineNo);
+            System.Threading.Thread.Sleep(2000);
+
+            jnts.DeleteWeldedJointsFAILS();
+        }
     }
 }

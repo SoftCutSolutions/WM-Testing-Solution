@@ -61,7 +61,7 @@ namespace WM.TestCases
         #region Methods
         public void NewWeldJoint(WeldJointObj g_WelJointObj)
         {
-            txtLine.SendCheckKeys(testValues._g_Line.LineNo);
+            txtLine.SendCheckKeys(testValues._g_LineNo);
             System.Threading.Thread.Sleep(2000);
 
             txtLine.SendKeys(Keys.Down);
@@ -69,7 +69,7 @@ namespace WM.TestCases
             System.Threading.Thread.Sleep(2000);
 
 
-            selectWPS.ddlSelectByLabel(testValues._g_WPS1.WPSName);
+            selectWPS.ddlSelectByLabel(g_WelJointObj.WPS);
             System.Threading.Thread.Sleep(3000);
 
             dpWeldDate.SendCheckKeys(g_WelJointObj.WeldDate);

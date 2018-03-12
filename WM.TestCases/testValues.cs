@@ -8,8 +8,6 @@ using System.Threading.Tasks;
 
 namespace WM.TestCases
 {
-
-
     public class testValues
     {
         public static RequestReportObj _g_RequestReport = new RequestReportObj {
@@ -19,7 +17,6 @@ namespace WM.TestCases
         };
         public static string _g_UserName = "admin";
         public static string _g_Password = "WMsoftcut!";
-
         public static areaObj _g_Area = new areaObj
         {
             AreaCode = "Regression Area",
@@ -29,64 +26,8 @@ namespace WM.TestCases
             Location = "Muscat",
             QRNumber = "123456"
         };
-
         public static string _g_LineNo = "Line01";
-
-        public static WelderObj _g_Welder = new WelderObj
-        {
-            WelderIDNO = "W01_r",
-            WelderName = "Reg Welder 01",
-            contractor = "ATE",
-            location = "Amal",
-            SerialNo = "123456",
-            WelderPosition = "Junior Welder",
-        };
-        public static WelderObj _g_Welder2 = new WelderObj
-        {
-            WelderIDNO = "W02_r",
-            WelderName = "Reg Welder 02",
-            contractor = "ATE",
-            location = "Amal",
-            SerialNo = "123457",
-            WelderPosition = "Senior Welder",
-        };
-
-
-        public static WPSObj _g_WPS1 = new WPSObj
-        {
-            WPSCode = "ASME IX",
-            WPSName = "_WPS01",
-            PQR = "PQR01",
-            ThickFrom = "0",
-            ThickTo = "12",
-            DIAFrom = "0",
-            DIATo = "24",
-
-        };
-        public static WPSObj _g_WPS2 = new WPSObj
-        {
-            WPSCode = "ASME IX",
-            WPSName = "_WPS02",
-            PQR = "PQR02",
-            ThickFrom = "0",
-            ThickTo = "12",
-            DIAFrom = "0",
-            DIATo = "24",
-
-        };
-        public static lineObj _g_Line = new lineObj
-        {
-            LineNo = "Line01",
-            PipingClass = "4CS01P",
-            MainSize = "12",
-            revision = "A",
-            DrawingNo1 = "Draw0123",
-            DrawingNo2 = "Draw0124",
-            SheetNo1 = "1/2",
-            SheetNo2 = "2/2",
-            Service = "Anti Foam"
-        };
-
+        public static string _g_PipingClass = "4CS01P";
         public static JointObj _g_Joint = new JointObj
         {
             JointSheet = "1/2",
@@ -109,6 +50,7 @@ namespace WM.TestCases
         };
         public static WeldJointObj _g_WelJointObj = new WeldJointObj
         {
+            WPS = "_WPS01",
             WeldDate = "22-Feb-2018",
             Welder1 = "W01_r",
             Welder2 = "W02_r",
@@ -346,6 +288,30 @@ namespace WM.TestCases
             }
         }
 
+        public static IEnumerable RequestReports
+        {
+            get
+            {
+                yield return new TestCaseData(new RequestReportObj
+                {
+                    reportType = "DAL",
+                    reportNumber = "DAL-x0001",
+                    reportDate = "03-Feb-2018"
+                });
+                yield return new TestCaseData(new RequestReportObj
+                {
+                    reportType = "VI",
+                    reportNumber = "VI-x0001",
+                    reportDate = "02-Feb-2018"
+                });
+                yield return new TestCaseData(new RequestReportObj
+                {
+                    reportType = "Weld",
+                    reportNumber = "Weld-x0001",
+                    reportDate = "01-Feb-2018"
+                });
+            }
+        }
 
         public static IEnumerable JointsPP
         {

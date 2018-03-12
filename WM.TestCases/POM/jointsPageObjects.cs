@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using NUnit.Framework;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 using System;
 using System.Collections.Generic;
@@ -118,6 +119,29 @@ namespace WM.TestCases
         public IWebElement btnSaveVT { get; set; }
         //---------------------------------------------------------------------
 
+        //Grid -------------
+        //Joints Edit
+        [FindsBy(How = How.XPath, Using = "//*[@id='tblJoints']/tbody/tr[2]/td[32]/div/button[2]")]
+        public IWebElement btnEditJoint { get; set; }
+
+        //Joints Delete
+        [FindsBy(How = How.XPath, Using = "//*[@id='tblJoints']/tbody/tr[2]/td[32]/div/button[3]")]
+        public IWebElement btnDeleteJoint { get; set; }
+
+        //Joints COunt
+        [FindsBy(How = How.XPath, Using = "//*[@id='tblJoints_toppager_right']/div")]
+        public IWebElement lblJointsCount { get; set; }
+
+        //Status Filter
+        [FindsBy(How = How.XPath, Using = "//*[@id='gs_Status']")]
+        public IWebElement txtStatusFilter { get; set; }
+
+        //Confirm Button
+        [FindsBy(How = How.XPath, Using = "/html/body/div[8]/div/div/div[2]/button[2]")]
+        public IWebElement btnOKConfirm { get; set; }
+
+        //-----------------------
+
         public void SelectLine(string lineNo)
         {
             txtLineNoSearch.Click();
@@ -236,6 +260,39 @@ namespace WM.TestCases
                 }
             }
             System.Threading.Thread.Sleep(3000);
+        }
+
+        public void DeleteOpenJoints()
+        {
+            txtStatusFilter.SendCheckKeys("Open");
+            System.Threading.Thread.Sleep(3000);
+
+
+            //Get Joints Count
+            int JointsCount = int.Parse(lblJointsCount.Text.Substring(13, lblJointsCount.Text.Length -13));
+            if (JointsCount > 1)
+            {
+                //Delete first row
+                btnDeleteJoint.Click();
+                System.Threading.Thread.Sleep(3000);
+
+                btnOKConfirm.Click();
+                System.Threading.Thread.Sleep(8000);
+            }
+            //Assert
+        }
+        public void DeleteWeldedJointsFAILS()
+        {
+            txtStatusFilter.SendCheckKeys("Welded");
+            System.Threading.Thread.Sleep(3000);
+
+            //wrong code. validate difrently 
+
+                btnDeleteJoint.Click();
+                System.Threading.Thread.Sleep(3000);
+          
+                Assert.Pass("Couldn't Delete it");
+            
         }
     }
 }

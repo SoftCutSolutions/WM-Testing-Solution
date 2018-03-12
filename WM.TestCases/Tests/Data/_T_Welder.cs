@@ -60,13 +60,13 @@ namespace WM.TestCases
             
         }
 
-        [Test]
-        public void ActivateDeactivateWelder()
+        [Test, TestCaseSource(typeof(MyFactoryClass), "Welders")]
+        public void ActivateDeactivateWelder(WelderObj welder)
         {
             welderPageObjects wld = Dash.OpenWelder();
             System.Threading.Thread.Sleep(1000);
 
-            wld.WelderDeactivate(testValues._g_Welder);
+            wld.WelderDeactivate(welder);
             System.Threading.Thread.Sleep(1000);
 
         }

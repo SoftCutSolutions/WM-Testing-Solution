@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace WM.TestCases
 {
-    public class _Base
+    public class _base
     {
         public IWebDriver driver { get; set; }
     }

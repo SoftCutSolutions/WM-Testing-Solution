@@ -47,7 +47,8 @@ namespace WM.TestCases
         public void AddWPStoArea()
         {
             wpsPageObjects wps = Dash.openWPS();
-            wps.AddWPStoArea(testValues._g_WPS1);
+            wps.AddWPStoArea(new WPSObj { });
+            //missing logic
         }
 
         [Test, TestCaseSource(typeof(MyFactoryClass), "WelderWPS")]

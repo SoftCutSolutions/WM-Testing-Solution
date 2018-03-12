@@ -15,7 +15,7 @@ namespace WM.TestCases
         public void NewPipingClass()
         {
             definitionsPageObjects defs = Dash.openDefinitions();
-            defs.NewPipingClass(testValues._g_Line.PipingClass);
+            defs.NewPipingClass(testValues._g_PipingClass);
 
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(1);
             //Assert.IsTrue(defs.alert.Text.Contains("Successfully"));
@@ -25,7 +25,7 @@ namespace WM.TestCases
         public void DeletePipingClass()
         {
             definitionsPageObjects defs = Dash.openDefinitions();
-            defs.DeletePipingClass(testValues._g_Line.PipingClass);
+            defs.DeletePipingClass(testValues._g_PipingClass);
 
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(1);
             //Assert.IsTrue(defs.alert.Text.ToLower().Contains("succesfully"));
