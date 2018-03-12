@@ -12,6 +12,7 @@ namespace WM.TestCases
     {
         public static void SendCheckKeys(this IWebElement element, string value)
         {
+            element.Clear();
             element.SendKeys(value);
 
             string insertedValue = element.GetAttribute("value");

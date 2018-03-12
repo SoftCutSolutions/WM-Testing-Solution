@@ -73,10 +73,12 @@
     <Compile Include="POM\wpsPageObjects.cs" />
     <Compile Include="seleniumMethods.cs" />
     <Compile Include="Tests\Administration\Definitions\_T_def_PipingClass.cs" />
+    <Compile Include="Models\WelderWPSObj.cs" />
     <Compile Include="Tests\Data\_T_Area.cs" />
     <Compile Include="Tests\Data\_T_Joints.cs" />
     <Compile Include="Tests\Data\_T_Line.cs" />
     <Compile Include="Tests\Data\_T_Welder.cs" />
+    <Compile Include="Tests\Data\_T_WeldJoint.cs" />
     <Compile Include="Tests\_T_requestReports.cs" />
     <Compile Include="Tests\Data\_T_WPS.cs" />
     <Compile Include="testValues.cs" />

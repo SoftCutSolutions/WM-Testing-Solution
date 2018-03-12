@@ -11,27 +11,27 @@ namespace WM.TestCases
     [Parallelizable]
     public class _T_Line :Hooks
     {
-        [Test]
-        public void NewLine()
+        [Test, TestCaseSource(typeof(MyFactoryClass), "Lines")]
+        public void NewLine(lineObj Line)
         {
             linePageObjects line = Dash.openLines();
-            line.NewLine(testValues._g_Line);
+            line.NewLine(Line);
             System.Threading.Thread.Sleep(1000);
         }
 
-        [Test]
-        public void EditLine()
+        [Test, TestCaseSource(typeof(MyFactoryClass), "Lines")]
+        public void EditLine(lineObj Line)
         {
             linePageObjects line = Dash.openLines();
-            line.EditLine(testValues._g_Line);
+            line.EditLine(Line);
             System.Threading.Thread.Sleep(1000);
         }
 
-        [Test]
-        public void DeleteLine()
+        [Test, TestCaseSource(typeof(MyFactoryClass), "Lines")]
+        public void DeleteLine(lineObj Line)
         {
             linePageObjects line = Dash.openLines();
-            line.DeleteLine(testValues._g_Line);
+            line.DeleteLine(Line);
 
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(1);
             //Assert.IsTrue(area.alertD.Text.Contains("succesfully"));

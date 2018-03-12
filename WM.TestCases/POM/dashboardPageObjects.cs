@@ -163,7 +163,7 @@ namespace WM.TestCases
         public RequestReportPageObjects OpenRequestReports()
         {
             mnuInspection.Click();
-            mnuWeldJoint.Click();
+            mnuRequestReport.Click();
             return new RequestReportPageObjects(_driver);
         }
         public testpackPageObjects openTestPackage()

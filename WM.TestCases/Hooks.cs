@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.IE;
@@ -17,17 +18,20 @@ namespace WM.TestCases
 
         internal dashboardPageObjects Dash { get => dash; set => dash = value; }
 
-        public Hooks()
+ 
+        public IWebDriver selectDriver()
         {
+
             Browser browser = _g_Browser;
             Mode mode = _g_Mode;
 
-            if (browser == Browser.Chrome) {
+            if (browser == Browser.Chrome)
+            {
                 if (mode == Mode.Local)
                     driver = new ChromeDriver();
                 else if (mode == Mode.Docker)
                 {
-                    DesiredCapabilities cap =  DesiredCapabilities.Chrome();
+                    DesiredCapabilities cap = DesiredCapabilities.Chrome();
                     cap.SetCapability("version", "");
                     cap.SetCapability("platform", "LINUX");
                     //cap.SetCapability("maxInstances", "100");
@@ -35,22 +39,24 @@ namespace WM.TestCases
                     driver = new RemoteWebDriver(new Uri(remote), cap);
                 }
             }
-            else if (browser == Browser.FireFox) { 
-                    if (mode == Mode.Local)
-                    {
-                        driver = new FirefoxDriver();
-                    }
-                    else if (mode==Mode.Docker)
-                    {
-                        DesiredCapabilities cap = DesiredCapabilities.Firefox();
-                        cap.SetCapability("version", "");
-                        cap.SetCapability("platform", "LINUX");
+            else if (browser == Browser.FireFox)
+            {
+                if (mode == Mode.Local)
+                {
+                    driver = new FirefoxDriver();
+                }
+                else if (mode == Mode.Docker)
+                {
+                    DesiredCapabilities cap = DesiredCapabilities.Firefox();
+                    cap.SetCapability("version", "");
+                    cap.SetCapability("platform", "LINUX");
 
-                        driver = new RemoteWebDriver(new Uri(remote), cap);
-                    }
+                    driver = new RemoteWebDriver(new Uri(remote), cap);
+                }
             }
             else if (browser == Browser.IE)
-                    driver = new InternetExplorerDriver();
+                driver = new InternetExplorerDriver();
+            return driver;
         }
         public enum Browser
         {
@@ -68,6 +74,7 @@ namespace WM.TestCases
         [SetUp]
         public void Init()
         {
+            driver = selectDriver();
             driver.Navigate().GoToUrl("http://ate.azurewebsites.net");
             loginPageObjects login = new loginPageObjects(driver);
             dashboardPageObjects _dash = login.login(testValues._g_UserName, testValues._g_Password);
@@ -79,8 +86,8 @@ namespace WM.TestCases
         public void CleanUp()
         {
             //driver.Close();
-            driver.Quit();
             driver.Dispose();
+            driver.Quit();
         }
     }
 }

@@ -6,7 +6,7 @@ namespace WM.TestCases
     public class RequestReportObj
     {
         public string reportType { get; set; }
-        public string reportNumber { get; set; }
         public string reportDate { get; set; }
+        public string reportNumber { get; set; }
     }
 }

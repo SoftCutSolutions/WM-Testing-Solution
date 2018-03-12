@@ -201,10 +201,10 @@ namespace WM.TestCases
             System.Threading.Thread.Sleep(2000);
 
             liSubArea.Click();
-            System.Threading.Thread.Sleep(1000);
+            System.Threading.Thread.Sleep(2000);
 
             cmEditSubArea.Click();
-            System.Threading.Thread.Sleep(1000);
+            System.Threading.Thread.Sleep(2000);
 
             txtSubAreaName.SendCheckKeys(area.SubArea1 + "-x");
             System.Threading.Thread.Sleep(1000);

@@ -42,6 +42,8 @@ namespace WM.TestCases
         [FindsBy(How = How.XPath, Using = "//*[@id='JCCNO']")]
         public IWebElement txtSerialNo { get; set; }
 
+
+
         //Position
         [FindsBy(How = How.XPath, Using = "//*[@id='Position']")]
         public IWebElement txtPosition { get; set; }
@@ -88,6 +90,11 @@ namespace WM.TestCases
         [FindsBy(How = How.XPath, Using = "//*[@id='Save']")]
         public IWebElement btnSave { get; set; }
         //----------------------------------------------------------------------------------------------
+        //Alerts --------------
+        //Alert1
+        [FindsBy(How = How.XPath, Using = "/html/body/div[9]/div/div[4]")]
+        public IWebElement alert1 { get; set; }
+        //---------------------
 
         //Welder Grid Filter ---------------------------------------------------------------------------
         //Edit Welder
@@ -97,6 +104,14 @@ namespace WM.TestCases
         //Delete Welder
         [FindsBy(How = How.XPath, Using = "//*[@id='tblWelders']/tbody/tr[2]/td[12]/div/button[3]")]
         public IWebElement btnDeleteWelder { get; set; }
+
+        //Deactivate Welder
+        [FindsBy(How = How.XPath, Using = "//*[@id='tblWelders']/tbody/tr[2]/td[12]/div/button[4]")]
+        public IWebElement btnDeactWelder { get; set; }
+
+        //Welder WPS
+        [FindsBy(How = How.XPath, Using = "//*[@id='tblWelders']/tbody/tr[2]/td[12]/div/button[5]")]
+        public IWebElement btnWelderWPS { get; set; }
 
         //Search Welder
         [FindsBy(How = How.XPath, Using = "//*[@id='search_tblWelders_top']/div/span")]
@@ -116,30 +131,79 @@ namespace WM.TestCases
 
         //Delete Welder OK
         [FindsBy(How = How.XPath, Using = "/html[1]/body[@class='modal-open']/div[@class='bootbox modal fade bootbox-confirm in']/div[@class='modal-dialog']/div[@class='modal-content']/div[@class='modal-footer']/button[@class='btn btn-primary']")]
-        public IWebElement btnDeleteOK { get; set; }
+        public IWebElement btnOK { get; set; }
 
         //----------------------------------------------------------------------------------------------
+
+        //ManageWPS------------------------------------
+        //WPS
+        [FindsBy(How = How.XPath, Using = "//*[@id='SelectedWPS']")]
+        public IWebElement selectWPSWelder { get; set; }
+
+        //Add Welder WPS
+        [FindsBy(How = How.XPath, Using = "//*[@id='SaveWPS']")]
+        public IWebElement btnAddWelderWPS { get; set; }
+
+        //Add Welder WPS From
+        [FindsBy(How = How.XPath, Using = "//*[@id='QuaDatepicker']")]
+        public IWebElement dpWPSFrom { get; set; }
+
+
+        //Add Welder WPS To
+        [FindsBy(How = How.XPath, Using = "//*[@id='EXDatepicker']")]
+        public IWebElement dpWPSTo { get; set; }
+
+        //Close Welder WPS
+        [FindsBy(How = How.XPath, Using = "id('WPSPopUp')/div[@class='modal-content']/div[@class='modal-footer']/button[@class='btn btn-default btn-md']")]
+        public IWebElement btnCloseWelderWPS { get; set; }
+
+
+        //Search Welder WPS 
+        [FindsBy(How = How.XPath, Using = "//*[@id='search_jq_QualifiedWelderPeriod_top']/div/span")]
+        public IWebElement btnSearchWelderWPS { get; set; }
+
+        //Search Value Welder WPS 
+        [FindsBy(How = How.XPath, Using = "//*[@id='jqg3']")]
+        public IWebElement txtWelderWPSSearchValue { get; set; }
+
+        //Find Welder WPS 
+        [FindsBy(How = How.XPath, Using = "//*[@id='fbox_jq_QualifiedWelderPeriod_search']")]
+        public IWebElement btnFindWelderWPS { get; set; }
+
+        //Renew Welder WPS 
+        [FindsBy(How = How.XPath, Using = "//*[@id='jq_QualifiedWelderPeriod']/tbody/tr[2]/td[1]/div/input")]
+        public IWebElement btnRenewWelderWPS { get; set; }
+
+        //Delete Welder WPS 
+        [FindsBy(How = How.XPath, Using = "//*[@id='jq_QualifiedWelderPeriod']/tbody/tr[2]/td[2]/div/input")]
+        public IWebElement btnDeleteWelderWPS { get; set; }
+
+        //ConfirmOK 
+        [FindsBy(How = How.XPath, Using = "/html/body/div[*]/div/div/div[2]/button[2]")]
+        public IWebElement btnConfirmOK { get; set; }
+        //-----------------------------------------------------------------
+
 
         #endregion
 
         #region Methods
-        public void NewWelder(WelderObj welder, welderProcess wldprocess)
+        public void NewWelder(WelderObj welder)
         {
             btnNewWelder.Click();
-            System.Threading.Thread.Sleep(2000);
+            System.Threading.Thread.Sleep(5000);
 
             txtWelderIDNO.SendCheckKeys(welder.WelderIDNO);
             txtWelderName.SendCheckKeys(welder.WelderName);
 
             selectContractor.ddlSelectByLabel(welder.contractor);
 
-            txtDiamFrom.SendCheckKeys(wldprocess.DIAMFrom);
-            txtDiamTo.SendCheckKeys(wldprocess.DIAMTo);
+            txtDiamFrom.SendCheckKeys(welder.DIAMFrom);
+            txtDiamTo.SendCheckKeys(welder.DIAMTo);
 
-            txtThickFrom.SendCheckKeys(wldprocess.THICKFrom);
-            txtThickTo.SendCheckKeys(wldprocess.THICKTo);
-            txtMaterial.SendCheckKeys(wldprocess.Material);
-            txtprocessProcess.SendCheckKeys(wldprocess.Position);
+            txtThickFrom.SendCheckKeys(welder.THICKFrom);
+            txtThickTo.SendCheckKeys(welder.THICKTo);
+            txtMaterial.SendCheckKeys(welder.Material);
+            txtprocessProcess.SendCheckKeys(welder.Position);
 
             btnSave.Click();
 
@@ -178,10 +242,102 @@ namespace WM.TestCases
             btnDeleteWelder.Click();
             System.Threading.Thread.Sleep(3000);
 
-            btnDeleteOK.waitforElement();
-            btnDeleteOK.Click();
+            btnOK.waitforElement();
+            btnOK.Click();
         }
+
+        public void WelderDeactivate(WelderObj welder)
+        {
+            btnSearch.Click();
+            selectSearchCriteria.ddlSelectByLabel("Welder No");
+            txtSearchValue.SendCheckKeys(welder.WelderIDNO);
+            System.Threading.Thread.Sleep(1000);
+            btnFind.Click();
+
+            System.Threading.Thread.Sleep(2000);
+
+            btnDeactWelder.Click();
+            System.Threading.Thread.Sleep(2000);
+
+            //
+
+            btnOK.Click();
+        }
+
+        public void NewWelderWPS(WelderWPSObj WWPS)
+        {
+            openWelderWPS(WWPS);
+
+            selectWPSWelder.ddlSelectByLabel(WWPS.WPS);
+            dpWPSFrom.SendCheckKeys(WWPS.From);
+            dpWPSFrom.SendCheckKeys(WWPS.To);
+
+            btnAddWelderWPS.Click();
+            System.Threading.Thread.Sleep(1000);
+        }
+
+        public void RenewWelderWPS(WelderWPSObj WWPS)
+        {
+            openWelderWPS(WWPS);
+
+            ///Bug to be fixed first - right now it only do the first row.
+            //btnSearchWelderWPS.Click();
+            //System.Threading.Thread.Sleep(4000);
+
+            //txtWelderWPSSearchValue.SendCheckKeys(wps.WPSName);
+            //System.Threading.Thread.Sleep(3000);
+
+            //btnFindWelderWPS.Click();
+            //System.Threading.Thread.Sleep(2000);
+
+            btnRenewWelderWPS.Click();
+            System.Threading.Thread.Sleep(1000);
+
+            btnConfirmOK.Click();
+            System.Threading.Thread.Sleep(1000);
+
+            btnCloseWelderWPS.Click();
+
+        }
+        public void DeleteWelderWPS(WelderWPSObj WWPS)
+        {
+            openWelderWPS(WWPS);
+
+
+
+            btnDeleteWelderWPS.Click();
+            System.Threading.Thread.Sleep(1000);
+
+            btnConfirmOK.Click();
+            System.Threading.Thread.Sleep(1000);
+
+            btnCloseWelderWPS.Click();
+        }
+
+        //Display Welder Profile Page
+
+        //Reassign Welder to Contractor
+        
+        //Welder Production Joint
+
+        //Display Welder Profile Page
+
         #endregion
+
+
+        private void openWelderWPS(WelderWPSObj WWPS)
+        {
+            btnSearch.Click();
+            selectSearchCriteria.ddlSelectByLabel("Welder No");
+            txtSearchValue.SendCheckKeys(WWPS.Welder);
+            System.Threading.Thread.Sleep(1000);
+            btnFind.Click();
+
+            System.Threading.Thread.Sleep(2000);
+
+            btnWelderWPS.Click();
+            System.Threading.Thread.Sleep(3000);
+        }
 
     }
 }

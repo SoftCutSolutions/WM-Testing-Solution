@@ -81,6 +81,14 @@ namespace WM.TestCases
         [FindsBy(How = How.XPath, Using = "//*[@id='tblWPS']/tbody/tr[2]/td[10]/div/button[3]")]
         public IWebElement btnDelete { get; set; }
 
+        //WPS Welders btn
+        [FindsBy(How = How.XPath, Using = "//*[@id='tblWPS']/tbody/tr[2]/td[10]/div/button[4]")]
+        public IWebElement btnWPSWelders { get; set; }
+
+        //WPS Areas btn
+        [FindsBy(How = How.XPath, Using = "//*[@id='tblWPS']/tbody/tr[2]/td[10]/div/button[5]")]
+        public IWebElement btnWPSAreas { get; set; }
+
         //WPS DeleteOK btn
         [FindsBy(How = How.XPath, Using = "/html[1]/body[@class='modal-open']/div[@class='bootbox modal fade bootbox-confirm in']/div[@class='modal-dialog']/div[@class='modal-content']/div[@class='modal-footer']/button[@class='btn btn-primary']")]
         public IWebElement btnDeleteOK { get; set; }
@@ -88,6 +96,34 @@ namespace WM.TestCases
         //PWHT
         [FindsBy(How = How.XPath, Using = "//*[@id='PWHT']")]
         public IWebElement chkPWHT { get; set; }
+
+        //WPS Welders -----------------------------
+        //WelderID
+        [FindsBy(How = How.XPath, Using = "//*[@id='SelectedWelder']")]
+        public IWebElement selectWelderID { get; set; }
+
+        //From
+        [FindsBy(How = How.XPath, Using = "//*[@id='QualificationDate']")]
+        public IWebElement dpFrom { get; set; }
+
+        //To
+        [FindsBy(How = How.XPath, Using = "//*[@id='ExpiredDate']")]
+        public IWebElement dpTo { get; set; }
+
+        //Add
+        [FindsBy(How = How.XPath, Using = "//*[@id='SaveWPSWelder']")]
+        public IWebElement btnAddWPSWelder { get; set; }
+
+        //Renew
+        [FindsBy(How = How.XPath, Using = "//*[@id='jq_QualifiedWelders']/tbody/tr[2]/td[1]/div/input")]
+        public IWebElement btnRenewWPSWelder { get; set; }
+
+
+        //Delete
+        [FindsBy(How = How.XPath, Using = "//*[@id='jq_QualifiedWelders']/tbody/tr[2]/td[1]/div/input")]
+        public IWebElement btnDeleteWPSWelder { get; set; }
+        
+        //--------------------------------------------------------
 
         public void NewWPS(WPSObj WPS)
         {
@@ -139,6 +175,77 @@ namespace WM.TestCases
             btnSaveWPS.Click();
             System.Threading.Thread.Sleep(3000);
 
+        }
+
+        public void AddWPStoArea(WPSObj WPS)
+        {
+            btnSearchWPS.Click();
+            selectSearchBy.ddlSelectByLabel("WPS No");
+            txtSearchValue.SendCheckKeys(WPS.WPSName);
+            btnFind.Click();
+            System.Threading.Thread.Sleep(2000);
+
+            btnWPSAreas.Click();
+            System.Threading.Thread.Sleep(2000);
+            
+            //Missing Logic to Search the Grid for Areas
+
+
+        }
+
+        public void AddWelderToWPS(WelderWPSObj wWPS)
+        {
+            btnSearchWPS.Click();
+            selectSearchBy.ddlSelectByLabel("WPS No");
+            txtSearchValue.SendCheckKeys(wWPS.WPS);
+            btnFind.Click();
+            System.Threading.Thread.Sleep(2000);
+
+            btnWPSWelders.Click();
+            System.Threading.Thread.Sleep(3000);
+
+            selectWelderID.ddlSelectByLabel(wWPS.Welder);
+            dpFrom.SendCheckKeys(wWPS.From);
+            dpTo.SendCheckKeys(wWPS.To);
+
+            btnAddWPSWelder.Click();
+            System.Threading.Thread.Sleep(1000);
+        }
+
+        public void RenewWPSWelder(WelderWPSObj wWPS)
+        {
+            btnSearchWPS.Click();
+            selectSearchBy.ddlSelectByLabel("WPS No");
+            txtSearchValue.SendCheckKeys(wWPS.WPS);
+            btnFind.Click();
+            System.Threading.Thread.Sleep(2000);
+
+            btnWPSWelders.Click();
+            System.Threading.Thread.Sleep(2000);
+
+            //Missing Logic to Search the Grid for Areas
+
+            btnRenewWPSWelder.Click();
+            System.Threading.Thread.Sleep(2000);
+            btnDeleteOK.Click();
+        }
+
+        public void DeleteWPSWelder(WelderWPSObj wWPS)
+        {
+            btnSearchWPS.Click();
+            selectSearchBy.ddlSelectByLabel("WPS No");
+            txtSearchValue.SendCheckKeys(wWPS.WPS);
+            btnFind.Click();
+            System.Threading.Thread.Sleep(2000);
+
+            btnWPSWelders.Click();
+            System.Threading.Thread.Sleep(2000);
+
+            //Missing Logic to Search the Grid for Areas
+
+            btnDeleteWPSWelder.Click();
+            System.Threading.Thread.Sleep(2000);
+            btnDeleteOK.Click();
         }
     }
 }

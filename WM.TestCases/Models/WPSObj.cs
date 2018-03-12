@@ -15,6 +15,5 @@ namespace WM.TestCases
         public string  ThickTo { get; set; }
         public string DIAFrom { get; set; }
         public string DIATo { get; set; }
-
     }
 }

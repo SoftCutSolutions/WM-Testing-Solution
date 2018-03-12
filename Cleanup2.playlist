@@ -1,0 +1,1 @@
+<Playlist Version="1.0"><Add Test="WM.TestCases._T_Welder.DeleteWelderWPS" /><Add Test="WM.TestCases._T_Line.DeleteLine(WM.TestCases.lineObj)" /></Playlist>

@@ -30,6 +30,10 @@ namespace WM.TestCases
         [FindsBy(How = How.XPath, Using = "//*[@id='SheetID']")]
         public IWebElement selectSheetId { get; set; }
 
+        //Joint Number
+        [FindsBy(How = How.XPath, Using = "//*[@id='JointNo']")]
+        public IWebElement txtJointNumber { get; set; }
+
         //Joint Type
         [FindsBy(How = How.XPath, Using = "//*[@id='JointType']")]
         public IWebElement selectJointType { get; set; }
@@ -74,6 +78,46 @@ namespace WM.TestCases
         [FindsBy(How = How.XPath, Using = "//*[@id='SaveAndNew']")]
         public IWebElement btnSavePlusPlus { get; set; }
 
+        //Weld Panel ----------------------------------------------------------
+        //Panel
+        [FindsBy(How = How.XPath, Using = "//*[@id='div_WeldJoint']/div/div[1]")]
+        public IWebElement pnlWeld { get; set; }
+
+        //Weld Date
+        [FindsBy(How = How.XPath, Using = "//*[@id='strWeldDate']")]
+        public IWebElement dpWeldDate { get; set; }
+
+        //Welder
+        [FindsBy(How = How.XPath, Using = "//*[@id='WelderID']")]
+        public IWebElement selectWelderId { get; set; }
+
+        //Add Welder Btn
+        [FindsBy(How = How.XPath, Using = "//*[@id='collapse1']/div/div[2]/div[2]/div[5]/button")]
+        public IWebElement btnAddWelder { get; set; }
+        //---------------------------------------------------------------------
+
+        //VT Panel ------------------------------------------------------------
+        //VT panel Header
+        [FindsBy(How = How.XPath, Using = "//*[@id='div_VTRptJoint']/div/div[1]")]
+        public IWebElement pnlVT { get; set; }
+
+        //VT report
+        [FindsBy(How = How.XPath, Using = "//*[@id='VTReportID']")]
+        public IWebElement selectVTReport { get; set; }
+
+        //VT report no
+        [FindsBy(How = How.XPath, Using = "//*[@id='ReportNO']")]
+        public IWebElement txtVTReportNo { get; set; }
+
+        //VT report date
+        [FindsBy(How = How.XPath, Using = "//*[@id='ReportDate']")]
+        public IWebElement dpVTReportDate { get; set; }
+
+        //VT report save
+        [FindsBy(How = How.XPath, Using = "//*[@id='btn_SaveReport']")]
+        public IWebElement btnSaveVT { get; set; }
+        //---------------------------------------------------------------------
+
         public void SelectLine(string lineNo)
         {
             txtLineNoSearch.Click();
@@ -84,26 +128,48 @@ namespace WM.TestCases
             txtLineNoSearch.SendKeys(Keys.Enter);
         }
 
-        public void NewJointPlusPlus(string sheetId, JointObj joint)
+
+        public void NewJoint(JointObj joint)
         {
-            btnNewJoint.Click();
+            try
+            {
+                btnNewJoint.Click();
+            }
+            catch (Exception)
+            {
+
+            }
+
+
             System.Threading.Thread.Sleep(1000);
 
-            selectSheetId.ddlSelectByLabel(sheetId);
+            selectSheetId.ddlSelectByLabel(joint.JointSheet);
 
             selectJointType.ddlSelectByLabel(joint.JointType);
             selectJointCategory.ddlSelectByLabel(joint.JointCategory);
 
-            dtFitup.Clear();
+            if (!string.IsNullOrEmpty(joint.JointNo))
+            {
+                txtJointNumber.SendCheckKeys(joint.JointNo);
+            }
+
+            if (string.IsNullOrEmpty(joint.Fitupdate))
+            {
+                dtFitup.Clear();
+            }
+            else
+            {
+                dtFitup.SendCheckKeys(joint.Fitupdate);
+            }
 
             txtJointDIAM.SendCheckKeys(joint.DIAM);
             txtJointTHICK.SendCheckKeys(joint.THICK);
 
-            System.Threading.Thread.Sleep(2000);
+            System.Threading.Thread.Sleep(3000);
 
             selectJointWPS.SendKeys(Keys.Down);
 
-            System.Threading.Thread.Sleep(2000);
+            System.Threading.Thread.Sleep(3000);
 
             selectJointWPS.ddlSelectByLabel(joint.JointWPS);
 
@@ -111,7 +177,65 @@ namespace WM.TestCases
             selectJointDAL.ddlSelectByLabel(joint.DAL);
             txtActivityNumber.SendCheckKeys(joint.ActivityNo);
 
-            btnSavePlusPlus.Click();
+            if (!string.IsNullOrEmpty(joint.WeldDate))
+            {
+                pnlWeld.Click();
+                System.Threading.Thread.Sleep(1000);
+                dpWeldDate.SendCheckKeys(joint.WeldDate);
+                System.Threading.Thread.Sleep(1000);
+                selectWelderId.Click();
+                System.Threading.Thread.Sleep(1000);
+                if (!string.IsNullOrEmpty(joint.Welder1))
+                {
+                    selectWelderId.ddlSelectByLabel(joint.Welder1);
+                    System.Threading.Thread.Sleep(1000);
+                    btnAddWelder.Click();
+                }
+                if (!string.IsNullOrEmpty(joint.Welder2))
+                {
+                    selectWelderId.ddlSelectByLabel(joint.Welder2);
+                    System.Threading.Thread.Sleep(1000);
+                    btnAddWelder.Click();
+                }
+                if (!string.IsNullOrEmpty(joint.Welder3))
+                {
+                    selectWelderId.ddlSelectByLabel(joint.Welder3);
+                    System.Threading.Thread.Sleep(1000);
+                    btnAddWelder.Click();
+                }
+                if (!string.IsNullOrEmpty(joint.Welder4))
+                {
+                    selectWelderId.ddlSelectByLabel(joint.Welder4);
+                    System.Threading.Thread.Sleep(1000);
+                    btnAddWelder.Click();
+                }
+
+            }
+
+            if (!string.IsNullOrEmpty(joint.VTReportNumber))
+            {
+                //VT
+                pnlVT.Click();
+                System.Threading.Thread.Sleep(1000);
+
+                try
+                {
+                    selectVTReport.ddlSelectByLabel(joint.VTReportNumber);
+                }
+                catch (Exception)
+                {
+                    selectVTReport.ddlSelectByLabel("Add New ...");
+                    System.Threading.Thread.Sleep(3000);
+
+                    txtVTReportNo.SendCheckKeys(joint.VTReportNumber);
+                    dpVTReportDate.SendCheckKeys(joint.VTReportDate);
+                    System.Threading.Thread.Sleep(1000);
+
+                    btnSaveVT.Click();
+
+                }
+            }
+            System.Threading.Thread.Sleep(3000);
         }
     }
 }

@@ -16,7 +16,7 @@ namespace WM.TestCases
         {
             RequestReportPageObjects requestReport = Dash.OpenRequestReports();
 
-            requestReport.New(testValues._g_RequestReport);
+            requestReport.NewRequestReport(testValues._g_RequestReport);
             System.Threading.Thread.Sleep(1000);
         }
 
@@ -25,17 +25,12 @@ namespace WM.TestCases
         {
             RequestReportPageObjects requestReport = Dash.OpenRequestReports();
 
-            requestReport.Edit(testValues._g_RequestReport);
-            System.Threading.Thread.Sleep(1000);
         }
 
         [Test]
         public void DeleteReqestReport()
         {
             RequestReportPageObjects requestReport = Dash.OpenRequestReports();
-
-            requestReport.Delete(testValues._g_RequestReport);
-            System.Threading.Thread.Sleep(1000);
 
 
         }

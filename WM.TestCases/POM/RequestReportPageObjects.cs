@@ -12,23 +12,48 @@ namespace WM.TestCases
             PageFactory.InitElements(_driver, this);
         }
 
+
         #region Objects
-        ////WPS Search value
-        //[FindsBy(How = How.XPath, Using = "//*[@id='jqg2']")]
-        //public IWebElement txtSearchValue { get; set; }
+
+
+        //New Request Report
+        [FindsBy(How = How.XPath, Using = "//*[@id='addNewRequest']")]
+        public IWebElement btnNewRequestReport { get; set; }
+
+        //Request Report Type
+        [FindsBy(How = How.XPath, Using = "//*[@id='RequestReportType']")]
+        public IWebElement selectRequestType { get; set; }
+
+        //Report Number
+        [FindsBy(How = How.XPath, Using = "//*[@id='RequestNumber']")]
+        public IWebElement txtReportNumber { get; set; }
+
+        //Report Date
+        [FindsBy(How = How.XPath, Using = "//*[@id='strRequestDate']")]
+        public IWebElement dpReporType { get; set; }
+
+        //save
+        [FindsBy(How = How.XPath, Using = "//*[@id='btn_SaveRequestReport']")]
+        public IWebElement btnSaveRequestReport { get; set; }
+
+
         #endregion
 
         #region Methods
-        public void New(RequestReportObj Request)
-        {
 
-        }
-        public void Edit(RequestReportObj Request)
+        public void NewRequestReport(RequestReportObj request)
         {
+            btnNewRequestReport.Click();
+            System.Threading.Thread.Sleep(3000);
 
-        }
-        public void Delete(RequestReportObj Request)
-        {
+
+            selectRequestType.ddlSelectByLabel(request.reportType);
+            txtReportNumber.SendCheckKeys(request.reportNumber);
+            dpReporType.SendCheckKeys(request.reportDate);
+            System.Threading.Thread.Sleep(1000);
+
+            btnSaveRequestReport.Click();
+            System.Threading.Thread.Sleep(1000);
 
         }
         #endregion
