@@ -60,7 +60,10 @@ namespace WM.TestCases
             Welder2 = "W02_r",
             Welder3 = "W03_r"
         };
-
+        public static TestPackObj _g_TestPackage = new TestPackObj
+        {
+            TPArea = "Regression Area"
+        };
     }
 
     public class MyFactoryClass
