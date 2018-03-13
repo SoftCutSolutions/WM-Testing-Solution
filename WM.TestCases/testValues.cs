@@ -15,8 +15,12 @@ namespace WM.TestCases
             reportNumber = "DAL-x0001", 
             reportDate = "01-Feb-2018"
         };
+
         public static string _g_UserName = "admin";
         public static string _g_Password = "WMsoftcut!";
+        public static string _g_PasswordNormal = "qa1";
+        public static string _g_UserNameNormal = "123456";
+
         public static areaObj _g_Area = new areaObj
         {
             AreaCode = "Regression Area",
@@ -56,6 +60,7 @@ namespace WM.TestCases
             Welder2 = "W02_r",
             Welder3 = "W03_r"
         };
+
     }
 
     public class MyFactoryClass
@@ -265,7 +270,7 @@ namespace WM.TestCases
                 yield return new TestCaseData(new JointObj
                 {
                     JointSheet = "1/2",
-                    JointNo = "J01",
+                    JointNo = "J02",
                     JointCategory = "FIELD",
                     JointType = "BW",
                     DIAM = "12",
@@ -296,19 +301,26 @@ namespace WM.TestCases
                 {
                     reportType = "DAL",
                     reportNumber = "DAL-x0001",
-                    reportDate = "03-Feb-2018"
+                    reportDate = "03-Feb-2018",
+                    Approver1 = "Walid Sabra"
                 });
                 yield return new TestCaseData(new RequestReportObj
                 {
                     reportType = "VI",
                     reportNumber = "VI-x0001",
-                    reportDate = "02-Feb-2018"
+                    reportDate = "02-Feb-2018",
+                    Approver1 = "Walid Sabra",
+                    Approver2 = "Walid Sabra",
+                    Approver3 = "Walid Sabra"
                 });
                 yield return new TestCaseData(new RequestReportObj
                 {
                     reportType = "Weld",
                     reportNumber = "Weld-x0001",
-                    reportDate = "01-Feb-2018"
+                    reportDate = "01-Feb-2018",
+                    Approver1 = "Walid Sabra",
+                    Approver2 = "Walid Sabra",
+                    Approver3 = "Walid Sabra"
                 });
             }
         }

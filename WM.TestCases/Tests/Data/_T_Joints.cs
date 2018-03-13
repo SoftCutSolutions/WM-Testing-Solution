@@ -22,11 +22,13 @@ namespace WM.TestCases
 
             jnts.NewJoint(joint);
             System.Threading.Thread.Sleep(3000);
+            TestContext.WriteLine("Processing Case "  + joint.ToString() );
 
             for (int i = 0; i < 4; i++)
             {
                 jnts.btnSavePlusPlus.Click();
                 System.Threading.Thread.Sleep(3000);
+                Assert.AreEqual(jnts.alertSucess.Text, "Joint Added Successfully.");              
             }
             jnts.btnSave.Click();
             System.Threading.Thread.Sleep(3000);
@@ -41,7 +43,7 @@ namespace WM.TestCases
 
             jnts.NewJoint(joint);
             jnts.btnSave.Click();
-            System.Threading.Thread.Sleep(2000);
+            System.Threading.Thread.Sleep(3000);
         }
 
 

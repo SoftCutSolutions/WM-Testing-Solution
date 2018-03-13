@@ -14,5 +14,8 @@ namespace WM.TestCases
     public class _base
     {
         public IWebDriver driver { get; set; }
+        //public string userName { get; set; }
+        //public string password { get; set; }
+      
     }
 }

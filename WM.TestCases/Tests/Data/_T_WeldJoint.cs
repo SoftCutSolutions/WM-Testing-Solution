@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
 
-namespace WM.TestCases.Tests.Data
+namespace WM.TestCases
 {
     [TestFixture]
     [Parallelizable]

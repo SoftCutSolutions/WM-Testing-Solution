@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using NUnit.Framework;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium.Support.UI;
 using System;
@@ -99,6 +100,7 @@ namespace WM.TestCases
         public void NewLine(lineObj line)
         {
             btnNewLine.Click();
+            TestContext.WriteLine("Processing Line " + line.LineNo);
 
             _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
 
@@ -127,10 +129,15 @@ namespace WM.TestCases
             System.Threading.Thread.Sleep(3000);
 
             btnSaveLine.Click();
+            TestContext.Write(TestContext.CurrentContext.Result);
+            TestContext.Write(TestContext.Error);
+
         }
 
         public void EditLine(lineObj line)
         {
+            TestContext.WriteLine("Processing Line " + line.LineNo);
+
             txtAreaFilter.SendCheckKeys(testValues._g_Area.AreaCode);
             txtLineFilter.SendCheckKeys(line.LineNo);
 
@@ -158,10 +165,14 @@ namespace WM.TestCases
             System.Threading.Thread.Sleep(3000);
 
             btnSaveLine.Click();
+            TestContext.Write(TestContext.CurrentContext.Result);
+            TestContext.Write(TestContext.Error);
         }
 
         public void DeleteLine(lineObj line)
         {
+            TestContext.WriteLine("Processing Line " + line.LineNo);
+
             txtAreaFilter.SendCheckKeys(testValues._g_Area.AreaCode);
             txtLineFilter.SendCheckKeys(line.LineNo);
 
@@ -172,6 +183,8 @@ namespace WM.TestCases
             System.Threading.Thread.Sleep(1000);
 
             btnOkDelete.Click();
+            TestContext.Write(TestContext.CurrentContext.Result);
+            TestContext.Write(TestContext.Error);
         }
     }
 }

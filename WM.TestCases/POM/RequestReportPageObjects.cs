@@ -67,11 +67,63 @@ namespace WM.TestCases
         [FindsBy(How = How.XPath, Using = "//button[2][@type='button']")]
         public IWebElement btnok { get; set; }
 
+        //Approvals --------------------------------------------
+        //Aprv1
+        [FindsBy(How = How.XPath, Using = "//*[@id='tblJointWelders']/tbody/tr[1]/td[2]/div")]
+        public IWebElement selectApproval1 { get; set; }
+
+        //Aprv1box
+        [FindsBy(How = How.XPath, Using = "//*[@id='tblJointWelders']/tbody/tr[1]/td[2]/div/div/div/input")]
+        public IWebElement selectApprovalBox1 { get; set; }
+
+        //Aprv1boxfr
+        [FindsBy(How = How.XPath, Using = "//*[@id='tblJointWelders']/tbody/tr[1]/td[2]/div/div/ul/li[1]")]
+        public IWebElement optAprfr1 { get; set; }
+
+        
+
+        //Aprv2
+        [FindsBy(How = How.XPath, Using = "//*[@id='tblJointWelders']/tbody/tr[2]/td[2]/div")]
+        public IWebElement selectApproval2 { get; set; }
+
+        //Aprvbox2
+        [FindsBy(How = How.XPath, Using = "//*[@id='tblJointWelders']/tbody/tr[2]/td[2]/div/div/div/input")]
+        public IWebElement selectApprovalBox2 { get; set; }
+
+        //Aprv2boxfr
+        [FindsBy(How = How.XPath, Using = "//*[@id='tblJointWelders']/tbody/tr[2]/td[2]/div/div/ul/li[1]")]
+        public IWebElement optAprfr2 { get; set; }
+
+        //Aprv3
+        [FindsBy(How = How.XPath, Using = "//*[@id='tblJointWelders']/tbody/tr[3]/td[2]/div")]
+        public IWebElement selectApproval3 { get; set; }
+
+        //Aprvbox3
+        [FindsBy(How = How.XPath, Using = "//*[@id='tblJointWelders']/tbody/tr[3]/td[2]/div/div/div/input")]
+        public IWebElement selectApprovalBox3 { get; set; }
+
+        //Aprv3boxfr
+        [FindsBy(How = How.XPath, Using = "//*[@id='tblJointWelders']/tbody/tr[3]/td[2]/div/div/ul/li[1]")]
+        public IWebElement optAprfr3 { get; set; }
+
+        //Aprv4
+        [FindsBy(How = How.XPath, Using = "//*[@id='tblJointWelders']/tbody/tr[4]/td[2]/div/a")]
+        public IWebElement selectApproval4 { get; set; }
+
+        //Aprvbox4
+        [FindsBy(How = How.XPath, Using = "//*[@id='tblJointWelders']/tbody/tr[4]/td[2]/div/div/div/input")]
+        public IWebElement selectApprovalBox4 { get; set; }
+
+        //Aprv4boxfr
+        [FindsBy(How = How.XPath, Using = "//*[@id='tblJointWelders']/tbody/tr[4]/td[2]/div/div/ul/li[1]")]
+        public IWebElement optAprfr4 { get; set; }
+        //---------------------------------------------------------
+
         #endregion
 
         #region Methods
 
-        public void New(RequestReportObj Request)
+        public void NewRequestReport(RequestReportObj Request)
         {
 
             btnNewRequestReport.Click();
@@ -90,25 +142,51 @@ namespace WM.TestCases
 
         }
 
-        public void Edit(RequestReportObj Request)
+        public void EditRequestApprovals(RequestReportObj Request)
         {
             //Find
             btnFindrecord.Click();
             System.Threading.Thread.Sleep(3000);
 
             txtbox.SendCheckKeys(Request.reportNumber);
-            System.Threading.Thread.Sleep(1000);
+            System.Threading.Thread.Sleep(2000);
 
             btnFind.Click();
             System.Threading.Thread.Sleep(3000);
 
             //Edit
             btnEdit.Click();
-            System.Threading.Thread.Sleep(3000);
+            System.Threading.Thread.Sleep(4000);
 
-            //This should cover approvals later instead of changing dates 
-            dpReportDate.SendCheckKeys(Request.reportDate);
-            System.Threading.Thread.Sleep(1000);
+            if (!string.IsNullOrEmpty(Request.Approver1))
+            {
+                selectApproval1.Click();
+                selectApprovalBox1.SendCheckKeys(Request.Approver1);
+                optAprfr1.Click();
+                System.Threading.Thread.Sleep(3000);
+            }
+            if (!string.IsNullOrEmpty(Request.Approver2))
+            {
+                selectApproval2.Click();
+                selectApprovalBox2.SendCheckKeys(Request.Approver2);
+                optAprfr2.Click();
+                System.Threading.Thread.Sleep(3000);
+            }
+            if (!string.IsNullOrEmpty(Request.Approver3))
+            {
+                selectApproval3.Click();
+                selectApprovalBox3.SendCheckKeys(Request.Approver3);
+                optAprfr3.Click();
+                System.Threading.Thread.Sleep(3000);
+            }
+            if (!string.IsNullOrEmpty(Request.Approver4))
+            {
+                selectApproval4.Click();
+                selectApprovalBox4.SendCheckKeys(Request.Approver4);
+                optAprfr4.Click();
+                System.Threading.Thread.Sleep(3000);
+            }
+
 
             btnSaveRequestReport.Click();
             System.Threading.Thread.Sleep(3000);

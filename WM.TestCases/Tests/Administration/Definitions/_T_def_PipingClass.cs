@@ -11,6 +11,7 @@ namespace WM.TestCases
     [Parallelizable]
     public class _T_def_PipingClass :Hooks
     {
+
         [Test]
         public void NewPipingClass()
         {

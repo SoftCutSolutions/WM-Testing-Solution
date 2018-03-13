@@ -141,6 +141,12 @@ namespace WM.TestCases
         public IWebElement btnOKConfirm { get; set; }
 
         //-----------------------
+        //Alert
+        //Confirm Button
+        [FindsBy(How = How.XPath, Using = "/html/body/div[6]/div/div[4]")]
+        public IWebElement alertSucess { get; set; }
+
+        
 
         public void SelectLine(string lineNo)
         {
@@ -256,10 +262,10 @@ namespace WM.TestCases
                     System.Threading.Thread.Sleep(1000);
 
                     btnSaveVT.Click();
-
+                    System.Threading.Thread.Sleep(2000);
                 }
             }
-            System.Threading.Thread.Sleep(3000);
+            System.Threading.Thread.Sleep(1000);
         }
 
         public void DeleteOpenJoints()

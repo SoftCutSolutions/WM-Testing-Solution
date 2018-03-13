@@ -16,7 +16,7 @@ namespace WM.TestCases
         {
             RequestReportPageObjects requestReport = Dash.OpenRequestReports();
 
-            requestReport.New(request);
+            requestReport.NewRequestReport(request);
             System.Threading.Thread.Sleep(1000);
         }
 
@@ -25,7 +25,7 @@ namespace WM.TestCases
         {
             RequestReportPageObjects requestReport = Dash.OpenRequestReports();
 
-            requestReport.Edit(request);
+            requestReport.EditRequestApprovals(request);
             System.Threading.Thread.Sleep(1000);
 
         }
