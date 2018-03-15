@@ -12,38 +12,32 @@ namespace WM.TestCases.Tests.Data
     class _T_Materials:Hooks
     {
 
-        [Test]
-        public void Newmaterials()
+        [Test, TestCaseSource(typeof(MyFactoryClass), "Materials")]
+        public void Newmaterials(materialObj mat)
         {
             materialsPageObjects materials = Dash.OpenMaterials();
 
-            materials.New(testValues._g_materials);
+            materials.New(mat);
             System.Threading.Thread.Sleep(2000);
-
         }
 
-        [Test]
-        public void Editmaterials()
+        [Test, TestCaseSource(typeof(MyFactoryClass), "Materials")]
+        public void Editmaterials(materialObj mat)
         {
             materialsPageObjects materials = Dash.OpenMaterials();
 
-            materials.Edit(testValues._g_materials);
+            materials.Edit(mat);
             System.Threading.Thread.Sleep(2000);
-
         }
 
-        [Test]
-        public void Deletematerials()
+        [Test, TestCaseSource(typeof(MyFactoryClass), "Materials")]
+        public void Deletematerials(materialObj mat)
         {
             materialsPageObjects materials = Dash.OpenMaterials();
 
-            materials.Delete(testValues._g_materials);
+            materials.Delete(mat);
             System.Threading.Thread.Sleep(2000);
-
         }
-
-
-
 
     }
 }

@@ -125,18 +125,6 @@ namespace WM.TestCases
             txtDeliveryCon.SendCheckKeys(mat.DeliveryCon);
             txtStandard.SendCheckKeys(mat.Standard);
             txtGrade.SendCheckKeys(mat.Grade);
-            //txtGroup1.SendCheckKeys(mat.Group1);
-            //txtGroup2.SendCheckKeys(mat.Group2);
-            //txtGroup3.SendCheckKeys(mat.Group3);
-            //txtCode.SendCheckKeys(mat.Code);
-            //System.Threading.Thread.Sleep(1000);
-
-            //txtSupplier.SendCheckKeys(mat.Supplier);
-            //txtType.SendCheckKeys(mat.Type);
-            //txtThikness.SendCheckKeys(mat.Thinkess);
-            //txtASMEGNo.SendCheckKeys(mat.ASMEGNo);
-            //txtASMEPNo.SendCheckKeys(mat.ASMEPNo);
-            //chkbxActive.Click();
             System.Threading.Thread.Sleep(2000);
 
             btnSave.Click();

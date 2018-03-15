@@ -76,26 +76,49 @@ namespace WM.TestCases
             RejectionReason = "x",
             prepareFor = "RT"
         };
-        public  static materialObj _g_materials = new materialObj
-        {
-            MaterialName = "M1x",
-            ASMEGNo = "ASMEGNo",
-            ASMEPNo = "ASMEPNo",
-            Code = "Code",
-            DeliveryCon = "DeliveryCon",
-            Grade = "Grade",
-            Group1 = "Group1",
-            Group2 = "Group2",
-            Group3 = "Group3",
-            Standard= "Standard",
-            Supplier = "Supplier",
-            Thinkess = "Thinkess",
-            Type = "Type"
-        };
+        public static SelectNDEObj _g_sNDEObj = new SelectNDEObj { };
     }
 
     public class MyFactoryClass
     {
+        public static IEnumerable Materials
+        {
+            get
+            {
+                yield return new TestCaseData(new materialObj
+                {
+                    MaterialName = "M1x",
+                    ASMEGNo = "ASMEGNo",
+                    ASMEPNo = "ASMEPNo",
+                    Code = "Code",
+                    DeliveryCon = "DeliveryCon",
+                    Grade = "Grade",
+                    Group1 = "Group1",
+                    Group2 = "Group2",
+                    Group3 = "Group3",
+                    Standard = "Standard",
+                    Supplier = "Supplier",
+                    Thinkess = "Thinkess",
+                    Type = "Type"
+                });
+                yield return new TestCaseData(new materialObj
+                {
+                    MaterialName = "M2x",
+                    ASMEGNo = "ASMEGNo",
+                    ASMEPNo = "ASMEPNo",
+                    Code = "Code",
+                    DeliveryCon = "DeliveryCon",
+                    Grade = "Grade",
+                    Group1 = "Group1",
+                    Group2 = "Group2",
+                    Group3 = "Group3",
+                    Standard = "Standard",
+                    Supplier = "Supplier",
+                    Thinkess = "Thinkess",
+                    Type = "Type"
+                });
+            }
+        }
         public static IEnumerable Welders
         {
             get

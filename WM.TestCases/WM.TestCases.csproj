@@ -83,6 +83,7 @@
     <Compile Include="Tests\Inspection\_T_inspectionReports.cs" />
     <Compile Include="Tests\Inspection\_T_requestReports.cs" />
     <Compile Include="Tests\Data\_T_WPS.cs" />
+    <Compile Include="Tests\Inspection\_T_SelectNDE.cs" />
     <Compile Include="Tests\Inspection\_T_TestPackage.cs" />
     <Compile Include="testValues.cs" />
     <Compile Include="_base.cs" />
