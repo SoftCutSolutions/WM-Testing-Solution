@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using System;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 
 namespace WM.TestCases
@@ -13,6 +14,8 @@ namespace WM.TestCases
             PageFactory.InitElements(_driver, this);
         }
 
+
+
         #region Objects
         ////WPS Search value
         //[FindsBy(How = How.XPath, Using = "//*[@id='jqg2']")]
@@ -20,17 +23,20 @@ namespace WM.TestCases
         #endregion
 
         #region Methods
-        public void NewInspectionReport(SelectNDEObj SelectNDE)
+        public void EditLineReportPercentage(SelectNDEObj SelectNDE)
         {
-
         }
-        public void EditInspectionReport(SelectNDEObj SelectNDE)
-        {
 
+        public void EditPipingClassReportPercentage(SelectNDEObj g_sNDEObj)
+        {
         }
-        public void DeleteInspectionReport(SelectNDEObj SelectNDE)
-        {
 
+        public void ValidatePercentage(SelectNDEObj g_sNDEObj)
+        {
+        }
+
+        public void EditLineJointTypePercentage(SelectNDEObj g_sNDEObj)
+        {
         }
         #endregion
     }
