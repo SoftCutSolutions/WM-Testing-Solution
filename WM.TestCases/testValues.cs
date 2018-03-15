@@ -64,6 +64,34 @@ namespace WM.TestCases
         {
             TPArea = "Regression Area"
         };
+        public  static InspectionReportObj _g_InspectionReport = new InspectionReportObj
+        {
+            reportType = "VT",
+            reportNumber = "VT-x0002",
+            reportDate = "15-Mar-2018",
+            remark = "x",
+            mode ="accept",
+            ActionBy = "Walid Sabra",
+            AssessmentReportNo="AST-x0001",
+            RejectionReason = "x",
+            prepareFor = "RT"
+        };
+        public  static materialObj _g_materials = new materialObj
+        {
+            MaterialName = "M1x",
+            ASMEGNo = "ASMEGNo",
+            ASMEPNo = "ASMEPNo",
+            Code = "Code",
+            DeliveryCon = "DeliveryCon",
+            Grade = "Grade",
+            Group1 = "Group1",
+            Group2 = "Group2",
+            Group3 = "Group3",
+            Standard= "Standard",
+            Supplier = "Supplier",
+            Thinkess = "Thinkess",
+            Type = "Type"
+        };
     }
 
     public class MyFactoryClass
